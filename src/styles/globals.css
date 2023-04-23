@@ -1,26 +1,99 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-a {
-  color: inherit;
-  text-decoration: none;
+@import url("https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;500;600;700&family=Inter:wght@100;300;400;500;600;700;800;900&family=Noto+Sans+Georgian&display=swap");
+
+:root {
+	--color-primary: #00b3b0;
+	--color-secondary: #1b243f;
+	--color-teal: rgba(0, 179, 176, 0.12);
+	--font-primary: "Chakra Petch", sans-serif;
+	--font-secondary: "Inter", sans-serif;
 }
 
 * {
-  box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-overflow-scrolling: touch;
+
+	width: 100%;
+	overflow-x: hidden;
+	background: #fff;
+	position: relative;
+	font-family: "Chakra Petch", sans-serif;
+	font-family: "Inter", sans-serif;
+}
+
+::-webkit-scrollbar {
+	width: 0.4rem;
+	height: 0rem;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: #1b243f;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: rgba(0, 179, 176, 0.12);
+}
+
+.max-width {
+	max-width: 1440px;
+	margin: auto;
+}
+
+.custom-container {
+	margin: 0 auto;
+	max-width: 90%;
+}
+
+@media screen and (min-width: 600px) {
+	.custom-container {
+		max-width: 580px;
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.custom-container {
+		max-width: 698px;
+	}
+}
+
+@media screen and (min-width: 992px) {
+	.custom-container {
+		max-width: 932px;
+	}
+}
+
+@media screen and (min-width: 1200px) {
+	.custom-container {
+		max-width: 1000px;
+	}
+}
+
+@media screen and (min-width: 1280px) {
+	.custom-container {
+		max-width: 1180px;
+	}
+}
+
+@media screen and (min-width: 1440px) {
+	.custom-container {
+		max-width: 1200px;
+	}
 }
