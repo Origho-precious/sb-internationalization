@@ -1,9 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
-import { FC } from "react";
+import { CSSProperties, FC } from "react";
 
 interface LogoProps {
-	width?: number;
-	height?: number;
+	width?: CSSProperties["width"];
+	height?: CSSProperties["height"];
 	className?: string;
 }
 
