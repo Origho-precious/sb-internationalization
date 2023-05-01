@@ -23,11 +23,11 @@ const Layout: React.FC<Props> = ({ children, noBodyWrapper }) => {
 				<div>
 					<Navbar />
 					{!noBodyWrapper ? (
-						<div className="fk-content custom-container mx-auto">
+						<div className="sb-content custom-container mx-auto">
 							{children}
 						</div>
 					) : (
-						<div className="fk-content">{children}</div>
+						<div className="sb-content">{children}</div>
 					)}
 					<Footer />
 				</div>
@@ -40,13 +40,15 @@ const StyledLayout = styled.article`
 	min-height: 100vh;
 
 	& > main {
+    overflow-x: hidden;
+    
 		& > div {
 			max-width: 1440px;
 			margin: 0 auto;
 			flex-direction: column;
 			justify-content: space-between;
 
-			& > .fk-content {
+			& > .sb-content {
 				width: 100%;
 				margin: auto;
 				min-height: 78vh;

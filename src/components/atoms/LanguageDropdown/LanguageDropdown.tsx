@@ -43,7 +43,7 @@ const LanguageDropdown: FC<Props> = ({
 				className="flex items-center justify-between w-full"
 				onClick={() => setShowDropdown(!showDropdown)}
 			>
-				<p className="text-[12px]">{selectedOption}</p>
+				<p className="text-[12px] whitespace-nowrap">{selectedOption}</p>
 				<img
 					alt="dropdown"
 					className="ml-1.5"
@@ -78,7 +78,6 @@ const LanguageDropdown: FC<Props> = ({
 };
 
 const Wrapper = styled.div`
-	width: 135px;
 	padding: 7px 14px;
 	border-radius: 8px;
 
