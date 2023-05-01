@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import styled from "styled-components";
+import { useMediaQuery } from "react-responsive";
 import Logo from "../../atoms/Icons/Logo";
 import LanguageDropdown from "../../atoms/LanguageDropdown/LanguageDropdown";
 
@@ -18,6 +19,14 @@ const links = [
 const Navbar = () => {
 	const [showDropdown, setShowDropdown] = useState(false);
 	const [selectedLanguage, setSelectedLanguage] = useState(dropdownOptions[0]);
+
+	const isNotMobile = useMediaQuery({ query: "(min-width: 640px)" });
+
+	useEffect(() => {
+		if (!isNotMobile) {
+			setShowDropdown(false);
+		}
+	}, [isNotMobile]);
 
 	return (
 		<>
@@ -92,8 +101,13 @@ const Navbar = () => {
 			</nav>
 
 			<BackDrop
+				onClick={() => setShowDropdown(false)}
 				className={`
-        ${showDropdown ? "opacity-100 pointer-events-auto" : "opacity-0"}
+        ${
+					showDropdown
+						? "opacity-100 pointer-events-auto"
+						: "opacity-0 pointer-events-none"
+				}
       `}
 			/>
 		</>
