@@ -54,7 +54,9 @@ const LanguageDropdown: FC<Props> = ({
 
 			<div
 				className={`sb-dropdown flex flex-col items-start left-0 top-[110%]  transition-all duration-300 ease-in-out ${
-					showDropdown ? "opacity-100 pointer-events-auto" : "opacity-0"
+					showDropdown
+						? "opacity-100 pointer-events-auto"
+						: "opacity-0  pointer-events-none"
 				}`}
 			>
 				{options.map((option) => (
