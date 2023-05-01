@@ -15,8 +15,12 @@ const Layout: React.FC<Props> = ({ children, noBodyWrapper }) => {
 				<link rel="preconnect" href="https://fonts.googleapis.com" />
 				<link
 					rel="preconnect"
+					crossOrigin="true"
 					href="https://fonts.gstatic.com"
-					crossOrigin=""
+				/>
+				<link
+					rel="stylesheet"
+					href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;500;600;700&family=Inter:wght@100;300;400;500;600;700;900&display=swap"
 				/>
 			</Head>
 			<main className="transition-all duration-500 ease-in-out">
@@ -40,8 +44,8 @@ const StyledLayout = styled.article`
 	min-height: 100vh;
 
 	& > main {
-    overflow-x: hidden;
-    
+		overflow-x: hidden;
+
 		& > div {
 			max-width: 1440px;
 			margin: 0 auto;
