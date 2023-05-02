@@ -30,7 +30,7 @@ const Navbar = () => {
 
 	return (
 		<>
-			<nav className="h-[66px] w-full relative flex items-center justify-between py-3 mw:px-2 sm:px-6 px-4">
+			<nav className="h-[66px] w-full relative flex items-center justify-between py-3 mw:px-4 sm:px-6 px-4">
 				<div className="flex items-center">
 					<Link href="/" className="mr-4">
 						<Logo height="35px" />
