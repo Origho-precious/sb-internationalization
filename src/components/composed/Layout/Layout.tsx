@@ -33,8 +33,8 @@ const Layout: React.FC<Props> = ({ children, noBodyWrapper }) => {
 					) : (
 						<div className="sb-content">{children}</div>
 					)}
-					<Footer />
 				</div>
+				<Footer />
 			</main>
 		</StyledLayout>
 	);
