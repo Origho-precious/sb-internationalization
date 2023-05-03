@@ -1,5 +1,34 @@
 import styled from "styled-components";
 import Layout from "../components/composed/Layout/Layout";
+import Marquee from "react-fast-marquee";
+
+const customers = [
+	{
+		height: 35,
+		width: 84,
+		src: "/images/icons/stripe.webp",
+	},
+	{
+		height: 35,
+		width: 163,
+		src: "/images/icons/microsoft.webp",
+	},
+	{
+		height: 35,
+		width: 110,
+		src: "/images/icons/airbnb.webp",
+	},
+	{
+		height: 35,
+		width: 107,
+		src: "/images/icons/google.webp",
+	},
+	{
+		height: 35,
+		width: 164,
+		src: "/images/icons/storyblok.webp",
+	},
+];
 
 const Homepage = () => {
 	return (
@@ -46,6 +75,26 @@ const Homepage = () => {
 						</button>
 					</div>
 				</section>
+
+				<section className="sb-customers w-full mx-auto">
+					<h2 className="text-center" style={{ marginBottom: 40 }}>
+						Trusted by top companies
+					</h2>
+
+					<div className="sb-customers-logos flex items-center justify-center">
+						<Marquee
+							speed={100}
+							gradient={false}
+							direction="left"
+							pauseOnHover={true}
+							className="flex items-center"
+						>
+							{customers.map((customer) => (
+								<img {...customer} alt="customer" key={customer.src} />
+							))}
+						</Marquee>
+					</div>
+				</section>
 			</Wrapper>
 		</Layout>
 	);
@@ -56,22 +105,22 @@ const Wrapper = styled.div`
 		max-width: 824px;
 		margin: 79px auto 104px;
 
-		@media (max-width: 639px) {
+		@media screen and (max-width: 639px) {
 			margin-top: 40px;
 		}
 
 		& > div {
-			@media (max-width: 539px) {
+			@media screen and (max-width: 539px) {
 				width: 100%;
 			}
 		}
 
 		& h1 {
-			@media (max-width: 992px) {
+			@media screen and (max-width: 992px) {
 				line-height: 1.1;
 			}
 
-			@media (max-width: 529px) {
+			@media screen and (max-width: 529px) {
 				font-size: 32px;
 			}
 		}
@@ -79,7 +128,7 @@ const Wrapper = styled.div`
 		& .sb-para-1 {
 			margin-top: 25px;
 
-			@media (max-width: 529px) {
+			@media screen and (max-width: 529px) {
 				margin-top: 16px;
 			}
 		}
@@ -89,25 +138,25 @@ const Wrapper = styled.div`
 			right: 18px;
 			width: 172px;
 
-			@media (max-width: 992px) {
+			@media screen and (max-width: 992px) {
 				top: 95%;
 				right: 50%;
 				transform: translateX(50%);
 			}
 
-			@media (max-width: 767px) {
+			@media screen and (max-width: 767px) {
 				top: 95%;
 				right: 40px;
 				width: 100px;
 				transform: unset;
 			}
 
-			@media (max-width: 639px) {
+			@media screen and (max-width: 639px) {
 				right: 0;
 				width: 100px;
 			}
 
-			@media (max-width: 529px) {
+			@media screen and (max-width: 529px) {
 				display: none;
 			}
 		}
@@ -115,11 +164,11 @@ const Wrapper = styled.div`
 		& .sb-video-section {
 			margin-top: 73px;
 
-			@media (max-width: 767px) {
+			@media screen and (max-width: 767px) {
 				margin-top: 40px;
 			}
 
-			@media (max-width: 440px) {
+			@media screen and (max-width: 440px) {
 				flex-direction: column;
 			}
 
@@ -132,7 +181,7 @@ const Wrapper = styled.div`
 				box-shadow: 7px 7px 0px #1b243f;
 				transition: all 0.3s ease-in-out;
 
-				@media (max-width: 440px) {
+				@media screen and (max-width: 440px) {
 					margin-top: 12px;
 					margin-left: 0;
 					width: 90%;
@@ -140,6 +189,32 @@ const Wrapper = styled.div`
 
 				&:hover {
 					box-shadow: 8px 8px 0px #1b243f;
+				}
+			}
+		}
+	}
+
+	& .sb-customers {
+		left: 0;
+		right: 0;
+		position: absolute;
+		margin-bottom: 65px;
+		padding: 61px 0 60px;
+		background: rgba(0, 179, 176, 0.12);
+
+		& h2 {
+			color: #828282;
+			font-size: 24px;
+			font-weight: 600;
+			line-height: 29px;
+		}
+
+		& .sb-customers-logos {
+			& img {
+				margin-right: 100px !important;
+
+				@media screen and (max-width: 767px) {
+					margin-right: 50px !important;
 				}
 			}
 		}
