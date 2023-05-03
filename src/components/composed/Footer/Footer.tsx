@@ -5,15 +5,15 @@ import styled from "styled-components";
 const links = [
 	{
 		name: "Careers",
-		href: "/careers",
+		href: "#",
 	},
 	{
 		name: "Privacy Policy",
-		href: "/privacy-policy",
+		href: "#",
 	},
 	{
 		name: "Terms & Conditions",
-		href: "/terms-of-service",
+		href: "#",
 	},
 ];
 const Footer = () => {
