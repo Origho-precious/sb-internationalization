@@ -11,6 +11,7 @@ module.exports = {
 			fontFamily: {
 				chakra: "var(--font-family-primary)",
 				inter: "var(--font-family-secondary)",
+				nunito: "var(--font-family-tertiary)",
 			},
 			screens: {
 				mw: "1440px",
