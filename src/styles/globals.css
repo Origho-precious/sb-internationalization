@@ -95,3 +95,15 @@ body {
 		max-width: 1200px;
 	}
 }
+
+.rec .rec-pagination {
+	display: none;
+}
+
+/* .rec .rec-carousel {
+	height: 100% !important;
+} */
+
+.rec .rec-carousel-wrapper{
+	height: 100% !important;
+}
