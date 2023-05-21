@@ -19,7 +19,7 @@ const Layout: React.FC<Props> = ({ children, noBodyWrapper }) => {
 					href="https://fonts.gstatic.com"
 				/>
 				<link
-					href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;500;600;700&family=Inter:wght@100;200;300;400;500;600;700;900&family=Nunito+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap"
+					href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;500;600;700&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Inter:wght@100;300;400;500;600;700;900&family=Manrope:wght@200;300;400;500;600;700&family=Nunito+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap"
 					rel="stylesheet"
 				/>
 			</Head>

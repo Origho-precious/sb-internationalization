@@ -9,6 +9,8 @@
 	--font-family-primary: "Chakra Petch", sans-serif;
 	--font-family-secondary: "Inter", sans-serif;
 	--font-family-tertiary: "Nunito Sans", sans-serif;
+	--font-family--manrope: "Manrope", sans-serif;
+	--font-family-dm-sans: "DM Sans", sans-serif;
 }
 
 * {
@@ -94,16 +96,4 @@ body {
 	.custom-container {
 		max-width: 1200px;
 	}
-}
-
-.rec .rec-pagination {
-	display: none;
-}
-
-/* .rec .rec-carousel {
-	height: 100% !important;
-} */
-
-.rec .rec-carousel-wrapper{
-	height: 100% !important;
 }
