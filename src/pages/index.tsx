@@ -5,6 +5,7 @@ import Customers from "../components/sections/home/Customers";
 import Features from "../components/sections/home/Features";
 import Testimonials from "../components/sections/home/Testimonials";
 import Pricing from "../components/sections/home/Pricing";
+import Workflow from "../components/sections/home/Workflows";
 
 const Homepage = () => {
 	return (
@@ -19,14 +20,12 @@ const Homepage = () => {
 
 				<Pricing />
 
-				<section className="sb-workflow"></section>
+				<Workflow />
 			</Wrapper>
 		</Layout>
 	);
 };
 
-const Wrapper = styled.div`
-
-`;
+const Wrapper = styled.div``;
 
 export default Homepage;
