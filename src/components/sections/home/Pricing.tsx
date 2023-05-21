@@ -176,6 +176,7 @@ const Pricing = () => {
 				{pricing?.map(
 					({ perks, monthlyPrice, yearlyPrice, description, title }) => (
 						<PricingCard
+							key={title}
 							perks={perks}
 							title={title}
 							className="lg:col-span-4 col-span-12"

@@ -35,8 +35,8 @@ const PricingCard: FC<Props> = ({
 			</button>
 
 			<div className="sb-perks">
-				{perks.map(({ text, available }) => (
-					<div className="flex items-center">
+				{perks.map(({ text, available }, idx) => (
+					<div key={text + title + idx} className="flex items-center">
 						<div className="flex flex-col items-center justify-center">
 							{available ? (
 								<img src="/images/icons/checkmark.svg" alt="Check mark" />
