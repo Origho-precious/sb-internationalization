@@ -5,7 +5,8 @@ import Customers from "../components/sections/home/Customers";
 import Features from "../components/sections/home/Features";
 import Testimonials from "../components/sections/home/Testimonials";
 import Pricing from "../components/sections/home/Pricing";
-import Workflow from "../components/sections/home/Workflows";
+import Workflows from "../components/sections/home/Workflows";
+import Supercharge from "../components/sections/home/Supercharge";
 
 const Homepage = () => {
 	return (
@@ -13,14 +14,11 @@ const Homepage = () => {
 			<Wrapper>
 				<Intro />
 				<Customers />
-
 				<Features />
-
 				<Testimonials />
-
 				<Pricing />
-
-				<Workflow />
+				<Workflows />
+				<Supercharge />
 			</Wrapper>
 		</Layout>
 	);

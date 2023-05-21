@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Workflow = () => {
+const Workflows = () => {
 	return (
 		<Section>
 			<h2 className="font-inter text-secondary text-center">
@@ -17,7 +17,7 @@ const Workflow = () => {
 };
 
 const Section = styled.section`
-	margin: 164px 0 277px;
+	margin: 164px 0 180px;
 
 	& h2 {
 		font-size: 64px;
@@ -51,4 +51,4 @@ const Section = styled.section`
 	}
 `;
 
-export default Workflow;
+export default Workflows;
