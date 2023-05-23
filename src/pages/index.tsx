@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import Layout from "../components/composed/Layout/Layout";
 import Intro from "../components/sections/home/Intro";
 import Customers from "../components/sections/home/Customers";
@@ -11,7 +10,7 @@ import Supercharge from "../components/sections/home/Supercharge";
 const Homepage = () => {
 	return (
 		<Layout>
-			<Wrapper>
+			<>
 				<Intro />
 				<Customers />
 				<Features />
@@ -19,11 +18,9 @@ const Homepage = () => {
 				<Pricing />
 				<Workflows />
 				<Supercharge />
-			</Wrapper>
+			</>
 		</Layout>
 	);
 };
-
-const Wrapper = styled.div``;
 
 export default Homepage;

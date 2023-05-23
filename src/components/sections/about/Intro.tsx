@@ -32,6 +32,7 @@ const Intro = () => {
 const StyledDiv = styled.div`
 	left: 0;
 	right: 0;
+	top: 66px;
 	width: 100%;
 	height: 623px;
 	position: absolute;
