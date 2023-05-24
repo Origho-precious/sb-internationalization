@@ -1,6 +1,7 @@
 import Layout from "../components/composed/Layout/Layout";
 import Intro from "../components/sections/about/Intro";
 import Companies from "../components/sections/about/Companies";
+import TeamAndCulture from "../components/sections/about/TeamAndCulture";
 
 const Aboutpage = () => {
 	return (
@@ -8,6 +9,7 @@ const Aboutpage = () => {
 			<>
         <Intro />
         <Companies />
+        <TeamAndCulture />
 			</>
 		</Layout>
 	);
