@@ -30,7 +30,31 @@ const Platform = () => {
 };
 
 const StyledDiv = styled.div`
-	margin: 146px 0 120px;
+	margin: 979px 0 120px;
+
+  @media screen and (max-width: 1279px) {
+    margin-top: 1100px;
+  }
+
+  @media screen and (max-width: 767px) {
+    margin-top: 1300px;
+  }
+
+  @media screen and (max-width: 540px) {
+    margin-top: 1400px;
+  }
+
+  @media screen and (max-width: 450px) {
+    margin-top: 1500px;
+  }
+
+  @media screen and (max-width: 400px) {
+    margin-top: 1700px;
+  }
+
+  @media screen and (max-width: 320px) {
+    margin-top: 1900px;
+  }
 
 	& > div {
 		margin-bottom: 150px;
