@@ -12,6 +12,18 @@ const Layout: React.FC<Props> = ({ children, noBodyWrapper }) => {
 	return (
 		<StyledLayout className="bg-blue">
 			<Head>
+				<meta charSet="utf-8" />
+				<title>Artsy</title>
+				<meta name="theme-color" content="#00b3b0" />
+				<meta
+					name="description"
+					content="Empowering successful teams, one workflow at a time"
+				/>
+				<meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+				<meta
+					name="viewport"
+					content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"
+				/>
 				<link rel="preconnect" href="https://fonts.googleapis.com" />
 				<link
 					rel="preconnect"
