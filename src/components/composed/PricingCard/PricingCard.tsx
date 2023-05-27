@@ -106,6 +106,7 @@ const StyledDiv = styled.div<{ theme: Props["theme"] }>`
 		padding: 12px 43px;
 		margin: 20px 0 40px;
 		box-shadow: 7px 7px 0px #1b243f;
+		color: ${({ theme }) => (theme === "green" ? "#000" : "#fff")};
 		background: ${({ theme }) =>
 			theme === "green" ? "#fff" : "var(--color-primary)"};
 	}
