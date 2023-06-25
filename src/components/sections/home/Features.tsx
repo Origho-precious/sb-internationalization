@@ -4,14 +4,12 @@ import { FC } from "react";
 import styled from "styled-components";
 import { storyblokEditable } from "@storyblok/react";
 import { render } from "storyblok-rich-text-react-renderer";
-import { Blok } from "../../../interfaces";
+import { Blok, StoryblokImage } from "../../../interfaces";
 
 interface IListItem {
-	heading: string;
-	icon: {
-		filename: string;
-	};
 	body: unknown;
+	heading: string;
+	icon: StoryblokImage;
 }
 
 const Features: FC<Blok> = ({ blok }) => {
