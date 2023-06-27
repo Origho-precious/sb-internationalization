@@ -5,7 +5,7 @@ import Page from "../components/composed/Page";
 import Perk from "../components/atoms/Perk/Perk";
 import Intro from "../components/sections/home/Intro";
 import Pricing from "../components/sections/home/Pricing";
-import Footer from "../components/composed/Footer/Footer";
+// import Footer from "../components/composed/Footer/Footer";
 import Features from "../components/sections/home/Features";
 import Workflows from "../components/sections/home/Workflows";
 import Customers from "../components/sections/home/Customers";
@@ -20,7 +20,7 @@ export default function App({ Component, pageProps }: AppProps) {
 		components: {
 			Perk,
 			Intro,
-			Footer,
+			// Footer,
 			Pricing,
 			Features,
 			Customers,

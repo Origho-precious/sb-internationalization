@@ -1,8 +1,6 @@
-import { ChangeEvent, FC, useState } from "react";
 import Link from "next/link";
+import { ChangeEvent, useState } from "react";
 import styled from "styled-components";
-import { storyblokEditable } from "@storyblok/react";
-import { Blok } from "../../../interfaces";
 
 const links = [
 	{
@@ -18,7 +16,7 @@ const links = [
 		href: "#",
 	},
 ];
-const Footer: FC<Blok> = ({ blok }) => {
+const Footer = () => {
 	const [email, setEmail] = useState("");
 
 	const submitHandler = (e: ChangeEvent<HTMLFormElement>) => {
@@ -28,13 +26,10 @@ const Footer: FC<Blok> = ({ blok }) => {
 	};
 
 	return (
-		<StyledFooter
-			{...storyblokEditable(blok)}
-			className="flex flex-col items-center justify-end left-0 right-0"
-		>
+		<StyledFooter className="flex flex-col items-center justify-end">
 			<div className="sm:w-5/6 w-11/12 mx-auto">
 				<h1 className="font-inter font-medium italic text-center">
-					{blok?.title}
+					Stay up to date with the latest from us
 				</h1>
 				<form
 					onSubmit={submitHandler}
@@ -44,11 +39,11 @@ const Footer: FC<Blok> = ({ blok }) => {
 						type="email"
 						value={email}
 						name="email-address"
-						placeholder={blok?.inputPlaceholder}
+						placeholder="Your Email"
 						onChange={(e) => setEmail(e.target.value)}
 					/>
 					<button type="submit" className="sm:ml-5 sm:mt-0 mt-4">
-						{blok?.buttonText}
+						Subscribe
 					</button>
 				</form>
 
@@ -72,7 +67,6 @@ const Footer: FC<Blok> = ({ blok }) => {
 
 const StyledFooter = styled.footer`
 	height: 681px;
-	position: absolute;
 	padding: 24px 0 127px;
 	background: var(--color-secondary);
 
