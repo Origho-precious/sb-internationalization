@@ -56,6 +56,7 @@ const Customers: FC<Blok> = ({ blok }) => {
 									alt={company?.alt}
 									src={company?.filename}
 									style={{
+										marginRight: 100,
 										height:
 											styles[company?.title.toLowerCase() as ICompany["title"]]
 												?.height,
