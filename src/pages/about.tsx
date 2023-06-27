@@ -15,7 +15,7 @@ const Aboutpage = () => {
 				<TeamAndCulture />
 				<CoreValues />
 				<Platform />
-				<Supercharge />
+				{/* <Supercharge /> */}
 			</>
 		</Layout>
 	);

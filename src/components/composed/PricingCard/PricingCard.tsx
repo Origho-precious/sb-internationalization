@@ -6,7 +6,6 @@ import {
 	storyblokEditable,
 } from "@storyblok/react";
 import { BlokWithType } from "../../../interfaces";
-import Perk from "../../atoms/Perk/Perk";
 
 interface Props {
 	title: string;
@@ -31,8 +30,6 @@ const PricingCard: FC<BlokWithType<Props>> = ({ blok }) => {
 	} = blok;
 
 	const price = perMonth ? monthlyPrice : yearlyPrice;
-
-	console.log(blok);
 
 	useEffect(() => {
 		if (pricingType) {
