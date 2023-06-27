@@ -1,157 +1,30 @@
-import { useState } from "react";
+import { FC, useEffect, useState } from "react";
 import styled from "styled-components";
+import { StoryblokComponent, storyblokEditable } from "@storyblok/react";
+import { Blok } from "../../../interfaces";
 import PriceSwitch from "../../composed/PriceSwitch/PriceSwitch";
-import PricingCard from "../../composed/PricingCard/PricingCard";
 
-const pricing = [
-	{
-		title: "Freebie",
-		description:
-			"Perfect for small teams and startups who are just starting out.",
-		monthlyPrice: "$0",
-		yearlyPrice: "$0",
-		perks: [
-			{
-				text: "Team Workspace",
-				available: true,
-			},
-			{
-				text: "Unlimited Folders",
-				available: true,
-			},
-			{
-				text: "Unlimited Folders",
-				available: false,
-			},
-			{
-				text: "Unlimited Sharing",
-				available: false,
-			},
-			{
-				text: "FIle Management",
-				available: false,
-			},
-			{
-				text: "Unlimited Projects",
-				available: false,
-			},
-			{
-				text: "24/7 Customer support",
-				available: false,
-			},
-			{
-				text: "Realtime collaboration",
-				available: false,
-			},
-			{
-				text: "Custom Features",
-				available: false,
-			},
-		],
-	},
-	{
-		title: "Professional",
-		description:
-			"Ideal for small to medium-sized teams who need to manage one or two products.",
-		monthlyPrice: "$25",
-		yearlyPrice: "$225",
-		perks: [
-			{
-				text: "Team Workspace",
-				available: true,
-			},
-			{
-				text: "Unlimited Folders",
-				available: true,
-			},
-			{
-				text: "Unlimited Folders",
-				available: true,
-			},
-			{
-				text: "Unlimited Sharing",
-				available: true,
-			},
-			{
-				text: "FIle Management",
-				available: true,
-			},
-			{
-				text: "Unlimited Projects",
-				available: true,
-			},
-			{
-				text: "24/7 Customer support",
-				available: false,
-			},
-			{
-				text: "Realtime collaboration",
-				available: false,
-			},
-			{
-				text: "Custom Features",
-				available: false,
-			},
-		],
-	},
-	{
-		title: "Enterprise",
-		description:
-			"Ideal for larger teams or enterprises who need to manage multiple products",
-		monthlyPrice: "$100",
-		yearlyPrice: "$900",
-		perks: [
-			{
-				text: "Team Workspace",
-				available: true,
-			},
-			{
-				text: "Unlimited Folders",
-				available: true,
-			},
-			{
-				text: "Unlimited Folders",
-				available: true,
-			},
-			{
-				text: "Unlimited Sharing",
-				available: true,
-			},
-			{
-				text: "FIle Management",
-				available: true,
-			},
-			{
-				text: "Unlimited Projects",
-				available: true,
-			},
-			{
-				text: "24/7 Customer support",
-				available: true,
-			},
-			{
-				text: "Realtime collaboration",
-				available: true,
-			},
-			{
-				text: "Custom Features",
-				available: true,
-			},
-		],
-	},
-];
-
-const Pricing = () => {
+const Pricing: FC<Blok> = ({ blok }) => {
 	const [pricingType, setPricingType] = useState<"monthly" | "yearly">(
 		"monthly"
 	);
 
+	const pricing = [blok.freebie[0], blok.professional[0], blok.enterprise[0]];
+
+	useEffect(() => {
+		if (typeof window === "undefined") return;
+
+		const pricingType = localStorage.getItem("pricingType");
+
+		if (pricingType) {
+			setPricingType(pricingType as "monthly" | "yearly");
+		}
+	}, []);
+
 	return (
-		<Section>
-			<h2 className="font-inter text-secondary text-center">
-				Flexible Pricing
-			</h2>
-			<p className="text-center">Pricing to match your every need</p>
+		<Section {...storyblokEditable(blok)}>
+			<h2 className="font-inter text-secondary text-center">{blok?.heading}</h2>
+			<p className="text-center">{blok?.subHeading}</p>
 
 			<div className="flex items-center justify-center md:mb-24 mb-4">
 				<p className="font-dm-sans">Pay Monthly</p>
@@ -173,20 +46,12 @@ const Pricing = () => {
 			</div>
 
 			<div className="grid grid-cols-12 gap-[24px] lg:w-full sm:w-[500px] mx-auto">
-				{pricing?.map(
-					({ perks, monthlyPrice, yearlyPrice, description, title }) => (
-						<PricingCard
-							key={title}
-							perks={perks}
-							title={title}
-							className="lg:col-span-4 col-span-12"
-							description={description}
-							perMonth={pricingType === "monthly"}
-							theme={title !== "Professional" ? "white" : "green"}
-							price={pricingType === "monthly" ? monthlyPrice : yearlyPrice}
-						/>
-					)
-				)}
+				{pricing?.map((price) => (
+					<StoryblokComponent
+						key={price._uid}
+						blok={{ ...price, pricingType }}
+					/>
+				))}
 			</div>
 		</Section>
 	);
