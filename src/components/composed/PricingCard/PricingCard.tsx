@@ -1,27 +1,51 @@
-import React, { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import styled from "styled-components";
+import {
+	SbBlokData,
+	StoryblokComponent,
+	storyblokEditable,
+} from "@storyblok/react";
+import { BlokWithType } from "../../../interfaces";
+import Perk from "../../atoms/Perk/Perk";
 
 interface Props {
 	title: string;
-	price: string;
-	perMonth: boolean;
-	className?: string;
+	yearlyPrice: string;
 	description: string;
+	monthlyPrice: string;
 	theme: "white" | "green";
+	pricingType: "monthly" | "yearly";
 	perks: { text: string; available: boolean }[];
 }
 
-const PricingCard: FC<Props> = ({
-	title,
-	price,
-	perks,
-	theme,
-	perMonth,
-	description,
-	className = "",
-}) => {
+const PricingCard: FC<BlokWithType<Props>> = ({ blok }) => {
+	const [perMonth, setPerMonth] = useState(true);
+	const {
+		title,
+		description,
+		monthlyPrice,
+		yearlyPrice,
+		perks,
+		theme,
+		pricingType,
+	} = blok;
+
+	const price = perMonth ? monthlyPrice : yearlyPrice;
+
+	console.log(blok);
+
+	useEffect(() => {
+		if (pricingType) {
+			setPerMonth(pricingType === "monthly");
+		}
+	}, [pricingType]);
+
 	return (
-		<StyledDiv className={className} theme={theme}>
+		<StyledDiv
+			theme={theme}
+			className="lg:col-span-4 col-span-12"
+			{...storyblokEditable(blok as unknown as SbBlokData)}
+		>
 			<h3 className="font-manrope">{title}</h3>
 			<p className="font-manrope sb-description">{description}</p>
 
@@ -35,17 +59,8 @@ const PricingCard: FC<Props> = ({
 			</button>
 
 			<div className="sb-perks">
-				{perks.map(({ text, available }, idx) => (
-					<div key={text + title + idx} className="flex items-center">
-						<div className="flex flex-col items-center justify-center">
-							{available ? (
-								<img src="/images/icons/checkmark.svg" alt="Check mark" />
-							) : (
-								<img src="/images/icons/cancel.svg" alt="Not available" />
-							)}
-						</div>
-						<p className="font-manrope ml-[17px]">{text}</p>
-					</div>
+				{perks.map((perk, idx) => (
+					<StoryblokComponent key={idx} blok={perk} />
 				))}
 			</div>
 		</StyledDiv>
