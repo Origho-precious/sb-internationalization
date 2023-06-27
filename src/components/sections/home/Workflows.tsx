@@ -5,7 +5,7 @@ import { storyblokEditable } from "@storyblok/react";
 import { render } from "storyblok-rich-text-react-renderer";
 import { Blok } from "../../../interfaces";
 
-const Workflows:FC<Blok> = ({ blok }) => {
+const Workflows: FC<Blok> = ({ blok }) => {
 	return (
 		<Section {...storyblokEditable(blok)}>
 			<h2 className="font-inter text-secondary text-center">{blok?.title}</h2>

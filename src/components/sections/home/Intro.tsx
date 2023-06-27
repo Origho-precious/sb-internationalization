@@ -10,7 +10,7 @@ const Intro: FC<Blok> = ({ blok }) => {
 	return (
 		<Section {...storyblokEditable(blok)}>
 			<div className="relative mx-auto sm:w-full w-max">
-				<h1 className="font-inter md:text-[64px] text-[40px] text-center text-secondary font-black">
+				<h1 className="font-inter md:!text-[64px] text-[40px] text-center text-secondary font-black">
 					{blok?.headline}
 				</h1>
 
