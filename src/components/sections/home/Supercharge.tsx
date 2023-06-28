@@ -12,7 +12,7 @@ const Supercharge: FC<Blok> = ({ blok }) => {
 		>
 			<div>
 				<h2 className="text-center text-white font-inter">
-					Supercharge your team’s workflow today
+					{blok?.title}
 				</h2>
 
 				<div className="text-center text-white">{render(blok?.body)}</div>
