@@ -1,12 +1,14 @@
 /* eslint-disable @next/next/no-img-element */
 import { FC, useState } from "react";
 import styled from "styled-components";
+import { AppState } from "../../../store";
+import { LanguageOption } from "../../composed/Navbar/Navbar";
 
 interface Props {
-	options: string[];
 	className?: string;
-	selectedOption: string;
-	onSelect: (option: string) => void;
+	selectedOption: number;
+	onSelect: (option: AppState["language"]) => void;
+	options: LanguageOption[];
 }
 
 const LanguageDropdown: FC<Props> = ({
@@ -43,7 +45,9 @@ const LanguageDropdown: FC<Props> = ({
 				className="flex items-center justify-between w-full"
 				onClick={() => setShowDropdown(!showDropdown)}
 			>
-				<p className="text-[12px] whitespace-nowrap">{selectedOption}</p>
+				<p className="text-[12px] whitespace-nowrap">
+					{options[selectedOption]?.title}
+				</p>
 				<img
 					alt="dropdown"
 					className="ml-1.5"
@@ -61,17 +65,20 @@ const LanguageDropdown: FC<Props> = ({
 			>
 				{options.map((option) => (
 					<button
-						key={option}
+						key={option?.title}
 						className="sb-dropdown-item text-left"
 						style={{
-							background: selectedOption === option ? "#f7f7f7" : "transparent",
+							background:
+								options[selectedOption]?.code === option?.code
+									? "#f7f7f7"
+									: "transparent",
 						}}
 						onClick={() => {
-							onSelect(option);
+							onSelect(option?.code);
 							setShowDropdown(false);
 						}}
 					>
-						{option}
+						{option?.title}
 					</button>
 				))}
 			</div>
