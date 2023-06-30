@@ -1,6 +1,7 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import { storyblokInit, apiPlugin } from "@storyblok/react";
+import Store from "../store";
 import Page from "../components/composed/Page";
 import Perk from "../components/atoms/Perk/Perk";
 import Intro from "../components/sections/home/Intro";
@@ -32,5 +33,9 @@ export default function App({ Component, pageProps }: AppProps) {
 		},
 	});
 
-	return <Component {...pageProps} />;
+	return (
+		<Store>
+			<Component {...pageProps} />{" "}
+		</Store>
+	);
 }

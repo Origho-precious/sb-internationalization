@@ -16,6 +16,7 @@ const links = [
 		href: "#",
 	},
 ];
+
 const Footer = () => {
 	const [email, setEmail] = useState("");
 
