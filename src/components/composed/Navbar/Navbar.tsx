@@ -1,11 +1,22 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Link from "next/link";
 import styled from "styled-components";
 import { useMediaQuery } from "react-responsive";
 import Logo from "../../atoms/Icons/Logo";
+import { AppContext, AppState } from "../../../store";
 import LanguageDropdown from "../../atoms/LanguageDropdown/LanguageDropdown";
 
-const dropdownOptions = ["English [US]", "French [FR]", "German [DE]"];
+export interface LanguageOption {
+	title: string;
+	code: AppState["language"];
+}
+
+const dropdownOptions: LanguageOption[] = [
+	{ title: "English [US]", code: "en-us" },
+	{ title: "German [DE]", code: "de-de" },
+	{ title: "French [FR]", code: "fr" },
+];
+
 const links = [
 	{
 		name: "About",
@@ -18,7 +29,7 @@ const links = [
 ];
 const Navbar = () => {
 	const [showDropdown, setShowDropdown] = useState(false);
-	const [selectedLanguage, setSelectedLanguage] = useState(dropdownOptions[0]);
+	const { language, changeLanguage } = useContext(AppContext);
 
 	const isNotMobile = useMediaQuery({ query: "(min-width: 640px)" });
 
@@ -39,8 +50,10 @@ const Navbar = () => {
 					<div style={{ width: 135 }}>
 						<LanguageDropdown
 							options={dropdownOptions}
-							selectedOption={selectedLanguage}
-							onSelect={(option) => setSelectedLanguage(option)}
+							selectedOption={dropdownOptions?.findIndex(
+								(option) => option.code === language
+							)}
+							onSelect={(option) => changeLanguage(option)}
 						/>
 					</div>
 				</div>
