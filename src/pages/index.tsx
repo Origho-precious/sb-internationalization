@@ -7,7 +7,7 @@ import Spinner from "../components/atoms/Spinner/Spinner";
 
 const Homepage = ({ initialStory }: any) => {
 	const { language } = useContext(AppContext);
-	const [story, setStory] = useState(useStoryblokState(initialStory));
+	const [story, setStory] = useState(initialStory);
 
 	useEffect(() => {
 		const fetchStory = async () => {
@@ -19,16 +19,18 @@ const Homepage = ({ initialStory }: any) => {
 		fetchStory();
 	}, [language]);
 
+	const sbStory = useStoryblokState(story);
+
 	return (
 		<>
 			<Layout>
 				<div className="md:mt-20 mt-8">
-					{!story ? (
+					{!sbStory ? (
 						<div className="flex flex-col items-center">
 							<Spinner size={100} />
 						</div>
 					) : (
-						<StoryblokComponent blok={story?.content} />
+						<StoryblokComponent blok={sbStory?.content} />
 					)}
 				</div>
 			</Layout>
@@ -39,7 +41,7 @@ const Homepage = ({ initialStory }: any) => {
 export async function getStaticProps() {
 	const language = "en-us";
 
-	const res = await await fetchStoryByLanguage("home", language);
+	const res = await fetchStoryByLanguage("home", language);
 
 	return {
 		props: {
