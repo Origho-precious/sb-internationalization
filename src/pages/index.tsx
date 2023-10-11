@@ -12,25 +12,25 @@ const Homepage = ({ initialStory }: any) => {
 	useEffect(() => {
 		const fetchStory = async () => {
 			const story = await fetchStoryByLanguage("home", language);
-			console.log(story);
 			setStory(story);
 		};
 
 		fetchStory();
 	}, [language]);
 
-	const sbStory = useStoryblokState(story);
+	// const sbStory = useStoryblokState(story);
+	const sbStory = story;
 
 	return (
 		<>
 			<Layout>
 				<div className="md:mt-20 mt-8">
-					{!sbStory ? (
+					{!sbStory || !(sbStory as any)?.content ? (
 						<div className="flex flex-col items-center">
 							<Spinner size={100} />
 						</div>
 					) : (
-						<StoryblokComponent blok={sbStory?.content} />
+						<StoryblokComponent blok={sbStory.content} />
 					)}
 				</div>
 			</Layout>
