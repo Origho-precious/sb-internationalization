@@ -9,7 +9,7 @@ const Platform: FC<Blok> = ({ blok }) => {
 		<Section {...storyblokEditable(blok)}>
 			<div className="flex flex-col-reverse md:grid md:grid-cols-2 lg:gap-[70px] md:gap-[40px]">
 				<div className="md:col-span-1">
-					<img src={blok?.image?.filename} alt={blok?.image1?.alt} />
+					<img src={blok?.image?.filename} alt={blok?.image?.alt} />
 				</div>
 				<div className="md:col-span-1 md:mt-6 md:mb-0 mb-10">
 					<div className="font-inter text-secondary text-center md:text-left">
