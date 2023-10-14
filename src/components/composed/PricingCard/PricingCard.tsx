@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useContext, useEffect, useMemo, useState } from "react";
 import styled from "styled-components";
 import {
 	SbBlokData,
@@ -6,18 +6,21 @@ import {
 	storyblokEditable,
 } from "@storyblok/react";
 import { BlokWithType } from "../../../interfaces";
+import { AppContext } from "../../../store";
 
 interface Props {
 	title: string;
+	buttonText: string;
 	yearlyPrice: string;
+	pricingType: number;
 	description: string;
 	monthlyPrice: string;
 	theme: "white" | "green";
-	pricingType: "monthly" | "yearly";
 	perks: { text: string; available: boolean }[];
 }
 
 const PricingCard: FC<BlokWithType<Props>> = ({ blok }) => {
+	const { language } = useContext(AppContext);
 	const [perMonth, setPerMonth] = useState(true);
 	const {
 		title,
@@ -27,15 +30,27 @@ const PricingCard: FC<BlokWithType<Props>> = ({ blok }) => {
 		perks,
 		theme,
 		pricingType,
+		buttonText,
 	} = blok;
 
 	const price = perMonth ? monthlyPrice : yearlyPrice;
 
 	useEffect(() => {
 		if (pricingType) {
-			setPerMonth(pricingType === "monthly");
+			setPerMonth(pricingType === 1);
 		}
 	}, [pricingType]);
+
+	const translation = useMemo(() => {
+		switch (language) {
+			case "de-de":
+				return ["Monat", "Jahr"];
+			case "fr":
+				return ["Mois", "Année"];
+			default:
+				return ["Month", "Year"];
+		}
+	}, [language]);
 
 	return (
 		<StyledDiv
@@ -48,11 +63,11 @@ const PricingCard: FC<BlokWithType<Props>> = ({ blok }) => {
 
 			<div className="font-manrope sb-price flex items-center">
 				<p>{price}</p>
-				<p>/ {perMonth ? "Month" : "Year"}</p>
+				<p>/ {perMonth ? translation[0] : translation[1]}</p>
 			</div>
 
 			<button className="w-full flex flex-col items-center justify-center">
-				Get Started
+				{buttonText}
 			</button>
 
 			<div className="sb-perks">
