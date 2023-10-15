@@ -1,14 +1,13 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import styled from "styled-components";
 import { useMediaQuery } from "react-responsive";
 import Logo from "../../atoms/Icons/Logo";
-import { AppContext, AppState } from "../../../store";
 import LanguageDropdown from "../../atoms/LanguageDropdown/LanguageDropdown";
 
 export interface LanguageOption {
 	title: string;
-	code: AppState["language"];
+	code: "en-us" | "de-de" | "fr";
 }
 
 const dropdownOptions: LanguageOption[] = [
@@ -29,7 +28,6 @@ const links = [
 ];
 const Navbar = () => {
 	const [showDropdown, setShowDropdown] = useState(false);
-	const { language, changeLanguage } = useContext(AppContext);
 
 	const isNotMobile = useMediaQuery({ query: "(min-width: 640px)" });
 
@@ -48,13 +46,7 @@ const Navbar = () => {
 					</Link>
 
 					<div style={{ width: 135 }}>
-						<LanguageDropdown
-							options={dropdownOptions}
-							selectedOption={dropdownOptions?.findIndex(
-								(option) => option.code === language
-							)}
-							onSelect={(option) => changeLanguage(option)}
-						/>
+						<LanguageDropdown options={dropdownOptions} />
 					</div>
 				</div>
 
