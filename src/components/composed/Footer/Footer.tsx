@@ -85,6 +85,17 @@ const Footer = () => {
 		}
 	}, [router.query?.lang]);
 
+	const placeholderText = useMemo(() => {
+		switch (router.query?.lang) {
+			case "de-de":
+				return "Ihre E-Mail-Adresse";
+			case "fr":
+				return "Votre adresse e-mail";
+			default:
+				return "Your Email";
+		}
+	}, [router.query?.lang]);
+
 	return (
 		<StyledFooter className="flex flex-col items-center justify-end">
 			<div className="sm:w-5/6 w-11/12 mx-auto">
@@ -99,7 +110,7 @@ const Footer = () => {
 						type="email"
 						value={email}
 						name="email-address"
-						placeholder="Your Email"
+						placeholder={placeholderText}
 						onChange={(e) => setEmail(e.target.value)}
 					/>
 					<button type="submit" className="sm:ml-5 sm:mt-0 mt-4">
