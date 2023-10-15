@@ -1,4 +1,5 @@
-import { FC, useContext, useEffect, useMemo, useState } from "react";
+import { FC, useEffect, useMemo, useState } from "react";
+import { useRouter } from "next/router";
 import styled from "styled-components";
 import {
 	SbBlokData,
@@ -6,7 +7,6 @@ import {
 	storyblokEditable,
 } from "@storyblok/react";
 import { BlokWithType } from "../../../interfaces";
-import { AppContext } from "../../../store";
 
 interface Props {
 	title: string;
@@ -20,7 +20,7 @@ interface Props {
 }
 
 const PricingCard: FC<BlokWithType<Props>> = ({ blok }) => {
-	const { language } = useContext(AppContext);
+	const router = useRouter();
 	const [perMonth, setPerMonth] = useState(true);
 	const {
 		title,
@@ -34,6 +34,8 @@ const PricingCard: FC<BlokWithType<Props>> = ({ blok }) => {
 	} = blok;
 
 	const price = perMonth ? monthlyPrice : yearlyPrice;
+
+	const language = (router.query?.lang || "en-us") as "en-us" | "de-de" | "fr";
 
 	useEffect(() => {
 		if (pricingType) {

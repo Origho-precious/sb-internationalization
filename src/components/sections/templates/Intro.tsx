@@ -1,13 +1,15 @@
-import { FC, useContext, useState } from "react";
+import { FC, useState } from "react";
+import { useRouter } from "next/router";
 import styled from "styled-components";
 import { storyblokEditable } from "@storyblok/react";
 import { render } from "storyblok-rich-text-react-renderer";
 import { Blok } from "../../../interfaces";
-import { AppContext } from "../../../store";
 
 const Intro: FC<Blok> = ({ blok }) => {
-	const { language } = useContext(AppContext);
+	const router = useRouter();
 	const [searchTerm, setSearchTerm] = useState("");
+
+	const language = (router.query?.lang || "en-us") as "en-us" | "de-de" | "fr";
 
 	return (
 		<Section
@@ -47,7 +49,7 @@ const Section = styled.section<{ language: "en-us" | "de-de" | "fr" }>`
 		width: 100%;
 		position: absolute;
 		background: url("/images/backgrounds/templates-intro-bg.webp") no-repeat
-		center center/cover;
+			center center/cover;
 		height: ${({ language }) => (language !== "en-us" ? "400px" : "333px")};
 
 		@media screen and (max-width: 991px) {

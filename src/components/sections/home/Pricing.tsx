@@ -1,15 +1,17 @@
-import { FC, useContext, useMemo, useState } from "react";
+import { FC, useMemo, useState } from "react";
+import { useRouter } from "next/router";
 import styled from "styled-components";
 import { StoryblokComponent, storyblokEditable } from "@storyblok/react";
 import { Blok } from "../../../interfaces";
-import { AppContext } from "../../../store";
 import PriceSwitch from "../../composed/PriceSwitch/PriceSwitch";
 
 const Pricing: FC<Blok> = ({ blok }) => {
-	const { language } = useContext(AppContext);
+	const router = useRouter();
 	const [pricingType, setPricingType] = useState<1 | 2>(1);
 
 	const pricing = [blok.freebie[0], blok.professional[0], blok.enterprise[0]];
+
+	const language = (router.query?.lang || "en-us") as "en-us" | "de-de" | "fr";
 
 	const pricingText = useMemo(() => {
 		switch (language) {

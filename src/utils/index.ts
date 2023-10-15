@@ -1,9 +1,8 @@
 import { getStoryblokApi, ISbStoryParams } from "@storyblok/react";
-import { AppState } from "../store";
 
 const fetchStoryByLanguage = async (
 	slug: string,
-	language: AppState["language"]
+	language: "en-us" | "de-de" | "fr"
 ) => {
 	try {
 		const sbParams: ISbStoryParams = {
