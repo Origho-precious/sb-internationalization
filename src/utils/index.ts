@@ -8,6 +8,7 @@ const fetchStoryByLanguage = async (
 		const sbParams: ISbStoryParams = {
 			version: "draft", // or 'published'
 			language,
+			fallback_lang: "en-us",
 		};
 
 		const storyblokApi = getStoryblokApi();
