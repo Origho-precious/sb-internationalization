@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { useRouter } from "next/router";
 import Link from "next/link";
 import styled from "styled-components";
 import { useMediaQuery } from "react-responsive";
@@ -16,20 +17,62 @@ const dropdownOptions: LanguageOption[] = [
 	{ title: "French [FR]", code: "fr" },
 ];
 
-const links = [
-	{
-		name: "About",
-		href: "/about",
-	},
-	{
-		name: "Templates",
-		href: "/templates",
-	},
-];
 const Navbar = () => {
+	const router = useRouter();
 	const [showDropdown, setShowDropdown] = useState(false);
 
 	const isNotMobile = useMediaQuery({ query: "(min-width: 640px)" });
+
+	const language = (router.query?.lang || "en-us") as "en-us" | "de-de" | "fr";
+
+	const links = useMemo(() => {
+		switch (language) {
+			case "de-de":
+				return [
+					{
+						name: "Um",
+						href: "/about",
+					},
+					{
+						name: "Vorlagen",
+						href: "/templates",
+					},
+				];
+			case "fr":
+				return [
+					{
+						name: "À propos",
+						href: "/about",
+					},
+					{
+						name: "Modèles",
+						href: "/templates",
+					},
+				];
+			default:
+				return [
+					{
+						name: "About",
+						href: "/about",
+					},
+					{
+						name: "Templates",
+						href: "/templates",
+					},
+				];
+		}
+	}, [language]);
+
+	const buttonText = useMemo(() => {
+		switch (language) {
+			case "de-de":
+				return "Loslegen";
+			case "fr":
+				return "Commencer";
+			default:
+				return "Get Started";
+		}
+	}, [language]);
 
 	useEffect(() => {
 		if (!isNotMobile) {
@@ -60,7 +103,7 @@ const Navbar = () => {
 							{link.name}
 						</Link>
 					))}
-					<Button className="ml-12">Get Started</Button>
+					<Button className="ml-12">{buttonText}</Button>
 				</div>
 
 				<button
@@ -100,7 +143,7 @@ const Navbar = () => {
 								</Link>
 							))}
 						</div>
-						<Button className="mt-3">Get Started</Button>
+						<Button className="mt-3">{buttonText}</Button>
 					</Dropdown>
 				</div>
 			</nav>
