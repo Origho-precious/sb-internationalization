@@ -1,6 +1,5 @@
 import { FC } from "react";
 import styled from "styled-components";
-import Marquee from "react-fast-marquee";
 import { storyblokEditable } from "@storyblok/react";
 import { Blok } from "../../../interfaces";
 
