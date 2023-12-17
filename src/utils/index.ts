@@ -1,4 +1,14 @@
-import { getStoryblokApi, ISbStoryParams } from "@storyblok/react";
+import {
+	storyblokInit,
+	apiPlugin,
+	getStoryblokApi,
+	ISbStoryParams,
+} from "@storyblok/react";
+
+storyblokInit({
+	accessToken: process.env.STORYBLOK_ACCESS_TOKEN,
+	use: [apiPlugin],
+});
 
 const fetchStoryByLanguage = async (
 	slug: string,
